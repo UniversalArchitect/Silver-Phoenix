@@ -15,49 +15,61 @@
             text-align: center;
         }
         h1 {
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
         .container {
             padding: 20px;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-        }
-        th, td {
-            border: 1px solid #4da8da;
-            padding: 10px;
+        ul {
+            list-style: none;
+            padding: 0;
             text-align: left;
         }
-        th {
-            background-color: #2a2a2a;
+        li {
+            margin-bottom: 5px;
         }
         details {
-            margin-bottom: 10px;
-            text-align: left;
+            font-size: 1.1em;
         }
         summary {
             cursor: pointer;
-            padding: 10px;
-            background-color: #2a2a2a;
-            border: 1px solid #4da8da;
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
         }
-        details ul {
-            list-style: none;
-            padding: 10px;
-            margin: 0;
+        summary::before {
+            content: '+';
+            display: inline-block;
+            width: 20px;
+            color: #4da8da;
+            font-weight: bold;
         }
-        details li {
-            margin-bottom: 5px;
+        details[open] summary::before {
+            content: '−';
         }
-        a {
+        .submenu {
+            margin-left: 20px;
+            padding: 10px 0;
+        }
+        .submenu a {
             color: #4da8da;
             text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
         }
-        a:hover {
+        .submenu a:hover {
+            text-decoration: underline;
+        }
+        a.back {
+            color: #4da8da;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a.back:hover {
             text-decoration: underline;
         }
     </style>
@@ -65,42 +77,43 @@
 <body>
     <div class="container">
         <h1>Discovery Data and Calculations</h1>
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>Details</th>
-            </tr>
-            <tr>
-                <td>Item 1: Non-Locality</td>
-                <td>
-                    <details>
-                        <summary>Non-Locality</summary>
-                        <ul>
-                            <li><a href="non-locality-layman.html">Layman’s Guide to Non-Locality</a></li>
-                            <li><a href="non-locality-dataset.html">Dataset Utilized</a></li>
-                            <li><a href="non-locality-rigor.html">Full Mathematical Rigor</a></li>
-                            <li><a href="non-locality-notes.html">Practical Applications and Notes</a></li>
-                        </ul>
-                    </details>
-                </td>
-            </tr>
-            <tr>
-                <td>Item 2: [Placeholder]</td>
-                <td>
-                    <details>
-                        <summary>[Placeholder Item]</summary>
-                        <ul>
-                            <li><a href="#">Layman’s Guide (TBD)</a></li>
-                            <li><a href="#">Dataset Utilized (TBD)</a></li>
-                            <li><a href="#">Full Mathematical Rigor (TBD)</a></li>
-                            <li><a href="#">Practical Applications and Notes (TBD)</a></li>
-                        </ul>
-                    </details>
-                </td>
-            </tr>
-            <!-- Add more items as needed -->
-        </table>
-        <p><a href="index.html">Back to Home</a></p>
+        <ul>
+            <li>
+                <details>
+                    <summary>Non-Locality</summary>
+                    <div class="submenu">
+                        <a href="non-locality-layman.html">Layman’s Guide to Non-Locality</a>
+                        <a href="non-locality-dataset.html">Dataset Utilized</a>
+                        <a href="non-locality-rigor.html">Full Mathematical Rigor</a>
+                        <a href="non-locality-notes.html">Practical Applications and Notes</a>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Planck Force</summary>
+                    <div class="submenu">
+                        <a href="#">Layman’s Guide to Planck Force (TBD)</a>
+                        <a href="#">Dataset Utilized (TBD)</a>
+                        <a href="#">Full Mathematical Rigor (TBD)</a>
+                        <a href="#">Practical Applications and Notes (TBD)</a>
+                    </div>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Solar Mass Equivalency</summary>
+                    <div class="submenu">
+                        <a href="#">Layman’s Guide to Solar Mass Equivalency (TBD)</a>
+                        <a href="#">Dataset Utilized (TBD)</a>
+                        <a href="#">Full Mathematical Rigor (TBD)</a>
+                        <a href="#">Practical Applications and Notes (TBD)</a>
+                    </div>
+                </details>
+            </li>
+            <!-- Add more alphabetized items as needed -->
+        </ul>
+        <p><a class="back" href="index.html">Back to Home</a></p>
     </div>
 </body>
 </html>
