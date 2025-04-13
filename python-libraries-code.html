@@ -3,98 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Source Code - Silver Phoenix Engine</title>
+    <title>Silver Phoenix - Python Libraries and Code</title>
     <style>
         body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
             text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
         }
         h1, h2 {
-            margin-bottom: 20px;
+            color: #333;
         }
-        h1 {
-            font-size: 2.5em;
+        .code-container {
+            position: relative;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px 0;
         }
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+        pre {
+            margin: 0;
+            overflow-x: auto;
         }
-        p {
-            margin-bottom: 15px;
+        code {
+            font-family: 'Consolas', monospace;
+            color: #f8f8f2;
         }
-        ul {
-            display: inline-block;
-            text-align: left;
-            margin: 0 auto 15px;
-            padding-left: 20px;
-            max-width: 600px;
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
         }
-        a {
-            color: #4da8da;
-            text-decoration: none;
+        .copy-btn:hover {
+            background-color: #45a049;
         }
-        a:hover {
-            text-decoration: underline;
+        .library-list {
+            margin-top: 20px;
+        }
+        .library-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .library-list li {
+            background-color: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
     </style>
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
-    <div class="container">
-        <h1>Python Source Code</h1>
-        <p>
-            This is the raw code powering the Silver Phoenix Engine’s libraries—Engine 1 for relationships, Engine 2 for CODATA, derived data, and mappings. Actual snippets coming soon.
-        </p>
-        <h2>Engine 1 - Relationships</h2>
-        <p>
-            Code to define 17.3 million dimensional relationships, like D1’s distance and D4’s duration sharing a linear equation.
-        </p>
-        <ul>
-            <li>import pandas as pd
+    <header>
+        <h1>Silver Phoenix - Python Libraries and Code</h1>
+        <p>Core engines for mapping universal relationships in the Silver Phoenix framework.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Python Engines</h2>
+            <p>Below are the base Python engines for the Silver Phoenix project, designed to store and process relationships across 12 dimensions. Copy and paste the code to start building the universe.</p>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                <pre><code class="language-python">
+import pandas as pd
 import networkx as nx
-import numpy as np
-import random
 import pickle
 
 # Engine 1: Relationship Data
 class Engine1:
     def __init__(self):
-        self.graph = nx.DiGraph()  # Directed graph for relationships
+        self.graph = nx.DiGraph()
         self.dimensions = {
             'D1': 'linear', 'D4': 'linear', 'D7': 'linear', 'D10': 'linear',
             'D2': 'planar', 'D5': 'planar', 'D8': 'planar', 'D11': 'planar',
             'D3': 'spatial', 'D6': 'spatial', 'D9': 'spatial', 'D12': 'spatial'
         }
-        self.force_triggers = {
-            'planck': ['D1', 'D4', 'D7'],
-            'magnetism': ['D2', 'D5', 'D8'],
-            'gravity': ['D3', 'D6', 'D9']
-        }
-        self.relationships = []  # List to store relationship metadata
-        self.ste_field = {}  # Space-Time-Energy field state
+        self.relationships = pd.DataFrame(columns=['id', 'dim1', 'dim2', 'type', 'meta'])
 
     def add_relationship(self, dim1, dim2, rel_type, metadata=None):
-        """Add a relationship between dimensions or sets."""
+        """Add a relationship with unique ID."""
+        rel_id = f"{dim1}-{dim2}-{len(self.relationships)}"
         self.graph.add_edge(dim1, dim2, type=rel_type, meta=metadata or {})
-        self.relationships.append({
-            'dim1': dim1, 'dim2': dim2, 'type': rel_type, 'meta': metadata
-        })
-        self.update_ste_field(dim1, dim2)
+        new_row = pd.DataFrame([{
+            'id': rel_id, 'dim1': dim1, 'dim2': dim2, 
+            'type': rel_type, 'meta': metadata or {}
+        }])
+        self.relationships = pd.concat([self.relationships, new_row], ignore_index=True)
+        return rel_id
 
-    def update_ste_field(self, dim1, dim2):
-        """Update STE field based on force triggers."""
-        for force, triggers in self.force_triggers.items():
-            if dim1 in triggers or dim2 in triggers:
-                self.ste_field[(dim1, dim2)] = self.ste_field.get((dim1, dim2), 0) + 1
-                # Placeholder: Compute force propagation backward
+    def to_csv(self, filename='engine1_relationships.csv'):
+        """Export relationships to CSV."""
+        self.relationships.to_csv(filename, index=False)
+
+    @classmethod
+    def from_csv(cls, filename='engine1_relationships.csv'):
+        """Load relationships from CSV."""
+        instance = cls()
+        instance.relationships = pd.read_csv(filename)
+        for _, row in instance.relationships.iterrows():
+            instance.graph.add_edge(row['dim1'], row['dim2'], type=row['type'], meta=row['meta'])
+        return instance
 
     def save(self, filename='engine1_data.pkl'):
-        """Serialize Engine 1 data."""
+        """Serialize for backup."""
         with open(filename, 'wb') as f:
             pickle.dump(self, f)
 
@@ -102,97 +132,78 @@ class Engine1:
 class Engine2:
     def __init__(self):
         self.l1_codata = pd.DataFrame(columns=['key', 'value', 'status'])
-        self.l2_derived = pd.DataFrame(columns=['key', 'value', 'verified'])
+        self.l2_derived = pd.DataFrame(columns=['key', 'value', 'verified', 'path1', 'path2'])
         self.l3_mapping = pd.DataFrame(columns=['rel_id', 'name', 'value'])
 
-    def seed_codata(self, codata_list, n=5):
-        """Seed E2L1 with random CODATA inputs."""
-        selected = random.sample(codata_list, n)
+    def seed_codata(self, codata_list):
+        """Seed E2L1 with CODATA, tagged -U."""
         self.l1_codata = pd.DataFrame(
-            [[k, v, 'UNVERIFIED'] for k, v in selected],
+            [[k, v, '-U'] for k, v in codata_list],
             columns=['key', 'value', 'status']
         )
 
-    def verify_codata(self, key):
-        """Asymmetrically verify CODATA (placeholder)."""
-        # TODO: Define asymmetric verification logic
-        self.l1_codata.loc[self.l1_codata['key'] == key, 'status'] = 'VERIFIED'
-
-    def add_derived_data(self, key, value):
+    def add_derived_data(self, key, value, path1_rels, path2_rels):
         """Add to E2L2 with verification."""
-        verified = self.verify_derived(key, value)
-        new_row = pd.DataFrame([[key, value, verified]], columns=['key', 'value', 'verified'])
+        verified = self._check_paths(path1_rels, path2_rels, value)
+        new_row = pd.DataFrame([{
+            'key': key, 'value': value, 'verified': verified,
+            'path1': path1_rels, 'path2': path2_rels
+        }])
         self.l2_derived = pd.concat([self.l2_derived, new_row], ignore_index=True)
+        return verified
 
-    def verify_derived(self, key, value):
-        """Verify no circular logic or bias (placeholder)."""
-        # TODO: Implement recursive checks and bias detection
-        return True  # Temporary
+    def _check_paths(self, path1_rels, path2_rels, value):
+        """Placeholder for asymmetric verification."""
+        # TODO: Compare paths for equivalence
+        return False  # Unverified until paths defined
 
     def map_relationship(self, rel_id, name, value):
-        """Add mapping to E2L3."""
-        new_row = pd.DataFrame([[rel_id, name, value]], columns=['rel_id', 'name', 'value'])
+        """Add universal mapping to E2L3."""
+        new_row = pd.DataFrame([[rel_id, name, value]], 
+                             columns=['rel_id', 'name', 'value'])
         self.l3_mapping = pd.concat([self.l3_mapping, new_row], ignore_index=True)
 
+    def to_csv(self, prefix='engine2'):
+        """Export all libraries to CSV."""
+        self.l1_codata.to_csv(f'{prefix}_l1_codata.csv', index=False)
+        self.l2_derived.to_csv(f'{prefix}_l2_derived.csv', index=False)
+        self.l3_mapping.to_csv(f'{prefix}_l3_mapping.csv', index=False)
+
+    @classmethod
+    def from_csv(cls, prefix='engine2'):
+        """Load all libraries from CSV."""
+        instance = cls()
+        instance.l1_codata = pd.read_csv(f'{prefix}_l1_codata.csv')
+        instance.l2_derived = pd.read_csv(f'{prefix}_l2_derived.csv')
+        instance.l3_mapping = pd.read_csv(f'{prefix}_l3_mapping.csv')
+        return instance
+
     def save(self, filename='engine2_data.pkl'):
-        """Serialize Engine 2 data."""
+        """Serialize for backup."""
         with open(filename, 'wb') as f:
             pickle.dump(self, f)
+                </code></pre>
+            </div>
+        </section>
 
-# Example Usage
-if __name__ == "__main__":
-    # Initialize engines
-    e1 = Engine1()
-    e2 = Engine2()
+        <section class="library-list">
+            <h2>Dependencies</h2>
+            <p>The engines rely on the following Python libraries:</p>
+            <ul>
+                <li><strong>pandas</strong>: Data manipulation and CSV handling.</li>
+                <li><strong>networkx</strong>: Graph-based relationship storage.</li>
+                <li><strong>pickle</strong>: Serialization for state backup.</li>
+            </ul>
+        </section>
+    </main>
 
-    # Add a sample relationship to Engine 1
-    e1.add_relationship('D1', 'D4', 'point-to-point', {'math': 'linear', 'force': 'planck'})
-
-    # Seed Engine 2 with sample CODATA
-    sample_codata = [
-        ('planck_constant', 6.62607015e-34),
-        ('speed_of_light', 299792458),
-        ('gravitational_constant', 6.67430e-11),
-        ('electron_mass', 9.1093837e-31),
-        ('boltzmann_constant', 1.380649e-23)
-    ]
-    e2.seed_codata(sample_codata)
-
-    # Map a relationship in E2L3
-    e2.map_relationship('D1-D4', 'Planck_Linear', 6.62607015e-34)
-
-    # Save state
-    e1.save()
-    e2.save()
-
-    print("Engines initialized and sample data added!")</li>
-            <li>[Placeholder: Code for D4 linear equation, t2-t1]</li>
-        </ul>
-        <h2>Engine 2 - E2L1 CODATA</h2>
-        <p>
-            Code to store and tag CODATA, like c or ΔνCs, tied to relationships.
-        </p>
-        <ul>
-            <li>[Placeholder: Code for CODATA seeding]</li>
-        </ul>
-        <h2>Engine 2 - E2L2 Derived Data</h2>
-        <p>
-            Code to calculate and verify non-CODATA results, like D1 distances or D4 durations.
-        </p>
-        <ul>
-            <li>[Placeholder: Code for derived value calculation]</li>
-        </ul>
-        <h2>Engine 2 - E2L3 Mapping</h2>
-        <p>
-            Code to name and map relationships to values, tracking rounds.
-        </p>
-        <ul>
-            <li>[Placeholder: Code for mapping Linear Metric]</li>
-        </ul>
-        <p>
-            When the code’s ready, it’ll live here—until then, it’s a blueprint for the universe’s logic.
-        </p>
-        <p><a href="python-libraries.html">Back to Libraries</a> | <a href="index.html">Home</a></p>
-    </div>
+    <script>
+        function copyCode() {
+            const code = document.querySelector('code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            });
+        }
+    </script>
 </body>
 </html>
