@@ -3,207 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silver Phoenix - Python Libraries and Code</title>
+    <title>Python Source Code - Silver Phoenix Engine</title>
     <style>
         body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
-        }
-        header {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            border-radius: 5px;
         }
         h1, h2 {
-            color: #333;
+            margin-bottom: 20px;
         }
-        .code-container {
-            position: relative;
-            background-color: #1e1e1e;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 20px 0;
+        h1 {
+            font-size: 2.5em;
         }
-        pre {
-            margin: 0;
-            overflow-x: auto;
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        code {
-            font-family: 'Consolas', monospace;
-            color: #f8f8f2;
+        p {
+            margin-bottom: 15px;
         }
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 3px;
+        ul {
+            display: inline-block;
+            text-align: left;
+            margin: 0 auto 15px;
+            padding-left: 20px;
+            max-width: 600px;
         }
-        .copy-btn:hover {
-            background-color: #45a049;
+        a {
+            color: #4da8da;
+            text-decoration: none;
         }
-        .library-list {
-            margin-top: 20px;
-        }
-        .library-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .library-list li {
-            background-color: white;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        a:hover {
+            text-decoration: underline;
         }
     </style>
-    <!-- Highlight.js for syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
 </head>
 <body>
-    <header>
-        <h1>Silver Phoenix - Python Libraries and Code</h1>
-        <p>Core engines for mapping universal relationships in the Silver Phoenix framework.</p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Python Engines</h2>
-            <p>Below are the base Python engines for the Silver Phoenix project, designed to store and process relationships across 12 dimensions. Copy and paste the code to start building the universe.</p>
-            <div class="code-container">
-                <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-                <pre><code class="language-python">
-import pandas as pd
-import networkx as nx
-import pickle
-
-# Engine 1: Relationship Data
-class Engine1:
-    def __init__(self):
-        self.graph = nx.DiGraph()
-        self.dimensions = {
-            'D1': 'linear', 'D4': 'linear', 'D7': 'linear', 'D10': 'linear',
-            'D2': 'planar', 'D5': 'planar', 'D8': 'planar', 'D11': 'planar',
-            'D3': 'spatial', 'D6': 'spatial', 'D9': 'spatial', 'D12': 'spatial'
-        }
-        self.relationships = pd.DataFrame(columns=['id', 'dim1', 'dim2', 'type', 'meta'])
-
-    def add_relationship(self, dim1, dim2, rel_type, metadata=None):
-        """Add a relationship with unique ID."""
-        rel_id = f"{dim1}-{dim2}-{len(self.relationships)}"
-        self.graph.add_edge(dim1, dim2, type=rel_type, meta=metadata or {})
-        new_row = pd.DataFrame([{
-            'id': rel_id, 'dim1': dim1, 'dim2': dim2, 
-            'type': rel_type, 'meta': metadata or {}
-        }])
-        self.relationships = pd.concat([self.relationships, new_row], ignore_index=True)
-        return rel_id
-
-    def to_csv(self, filename='engine1_relationships.csv'):
-        """Export relationships to CSV."""
-        self.relationships.to_csv(filename, index=False)
-
-    @classmethod
-    def from_csv(cls, filename='engine1_relationships.csv'):
-        """Load relationships from CSV."""
-        instance = cls()
-        instance.relationships = pd.read_csv(filename)
-        for _, row in instance.relationships.iterrows():
-            instance.graph.add_edge(row['dim1'], row['dim2'], type=row['type'], meta=row['meta'])
-        return instance
-
-    def save(self, filename='engine1_data.pkl'):
-        """Serialize for backup."""
-        with open(filename, 'wb') as f:
-            pickle.dump(self, f)
-
-# Engine 2: Data Processing and Mapping
-class Engine2:
-    def __init__(self):
-        self.l1_codata = pd.DataFrame(columns=['key', 'value', 'status'])
-        self.l2_derived = pd.DataFrame(columns=['key', 'value', 'verified', 'path1', 'path2'])
-        self.l3_mapping = pd.DataFrame(columns=['rel_id', 'name', 'value'])
-
-    def seed_codata(self, codata_list):
-        """Seed E2L1 with CODATA, tagged -U."""
-        self.l1_codata = pd.DataFrame(
-            [[k, v, '-U'] for k, v in codata_list],
-            columns=['key', 'value', 'status']
-        )
-
-    def add_derived_data(self, key, value, path1_rels, path2_rels):
-        """Add to E2L2 with verification."""
-        verified = self._check_paths(path1_rels, path2_rels, value)
-        new_row = pd.DataFrame([{
-            'key': key, 'value': value, 'verified': verified,
-            'path1': path1_rels, 'path2': path2_rels
-        }])
-        self.l2_derived = pd.concat([self.l2_derived, new_row], ignore_index=True)
-        return verified
-
-    def _check_paths(self, path1_rels, path2_rels, value):
-        """Placeholder for asymmetric verification."""
-        # TODO: Compare paths for equivalence
-        return False  # Unverified until paths defined
-
-    def map_relationship(self, rel_id, name, value):
-        """Add universal mapping to E2L3."""
-        new_row = pd.DataFrame([[rel_id, name, value]], 
-                             columns=['rel_id', 'name', 'value'])
-        self.l3_mapping = pd.concat([self.l3_mapping, new_row], ignore_index=True)
-
-    def to_csv(self, prefix='engine2'):
-        """Export all libraries to CSV."""
-        self.l1_codata.to_csv(f'{prefix}_l1_codata.csv', index=False)
-        self.l2_derived.to_csv(f'{prefix}_l2_derived.csv', index=False)
-        self.l3_mapping.to_csv(f'{prefix}_l3_mapping.csv', index=False)
-
-    @classmethod
-    def from_csv(cls, prefix='engine2'):
-        """Load all libraries from CSV."""
-        instance = cls()
-        instance.l1_codata = pd.read_csv(f'{prefix}_l1_codata.csv')
-        instance.l2_derived = pd.read_csv(f'{prefix}_l2_derived.csv')
-        instance.l3_mapping = pd.read_csv(f'{prefix}_l3_mapping.csv')
-        return instance
-
-    def save(self, filename='engine2_data.pkl'):
-        """Serialize for backup."""
-        with open(filename, 'wb') as f:
-            pickle.dump(self, f)
-                </code></pre>
-            </div>
-        </section>
-
-        <section class="library-list">
-            <h2>Dependencies</h2>
-            <p>The engines rely on the following Python libraries:</p>
-            <ul>
-                <li><strong>pandas</strong>: Data manipulation and CSV handling.</li>
-                <li><strong>networkx</strong>: Graph-based relationship storage.</li>
-                <li><strong>pickle</strong>: Serialization for state backup.</li>
-            </ul>
-        </section>
-    </main>
-
-    <script>
-        function copyCode() {
-            const code = document.querySelector('code').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                alert('Code copied to clipboard!');
-            });
-        }
-    </script>
+    <div class="container">
+        <h1>Python Source Code</h1>
+        <p>
+            The Silver Phoenix Engine runs on two Python libraries—Engine 1 for relationships, Engine 2 for data and mappings. Below is the core code, powering connections like D1’s distance and D4’s duration.
+        </p>
+        <h2>Engine 1 - Relationships</h2>
+        <p>
+            Defines relationships across 12 dimensions, using graphs for connections (e.g., D1: x2-x1, D4: t2-t1) and pandas for storage.
+        </p>
+        <ul>
+            <li>Class: Engine1</li>
+            <li>Imports: pandas, networkx, pickle</li>
+            <li>Init: Creates DiGraph and DataFrame (id, dim1, dim2, type, meta)</li>
+            <li>Method: add_relationship(dim1, dim2, rel_type, metadata) - Adds edge to graph, row to DataFrame</li>
+            <li>Method: to_csv(filename) - Exports relationships to CSV</li>
+            <li>Method: from_csv(filename) - Loads from CSV</li>
+            <li>Method: save(filename) - Serializes to pickle</li>
+            <li>Example: D1 Distance (linear, points 1-2), D4 Duration (linear, points 1-2, translated)</li>
+        </ul>
+        <h2>Engine 2 - E2L1 CODATA</h2>
+        <p>
+            Stores CODATA (e.g., c for D1, ΔνCs for D4), tagged UNVERIFIED until checked.
+        </p>
+        <ul>
+            <li>Class: Engine2 (partial)</li>
+            <li>Init: Creates l1_codata DataFrame (key, value, status)</li>
+            <li>Method: seed_codata(codata_list) - Seeds DataFrame with constants</li>
+            <li>Example: c (D1 distance), ΔνCs (D4 duration)</li>
+        </ul>
+        <h2>Engine 2 - E2L2 Derived Data</h2>
+        <p>
+            Calculates results like D1 distances or D4 durations, verified asymmetrically.
+        </p>
+        <ul>
+            <li>Class: Engine2 (partial)</li>
+            <li>Init: Creates l2_derived DataFrame (key, value, verified, path1, path2)</li>
+            <li>Method: add_derived_data(key, value, path1_rels, path2_rels) - Adds verified data</li>
+            <li>Method: _check_paths(path1_rels, path2_rels, value) - Placeholder for verification</li>
+            <li>Example: D1 Distance (Round 1), D4 Duration (Round 2)</li>
+        </ul>
+        <h2>Engine 2 - E2L3 Mapping</h2>
+        <p>
+            Maps relationships to values, naming connections like “Linear Metric” for D1/D4.
+        </p>
+        <ul>
+            <li>Class: Engine2 (partial)</li>
+            <li>Init: Creates l3_mapping DataFrame (rel_id, name, value)</li>
+            <li>Method: map_relationship(rel_id, name, value) - Adds mapping</li>
+            <li>Example: Linear Metric (D1 to distance, D4 to duration)</li>
+        </ul>
+        <h2>Engine 2 - Export/Import</h2>
+        <p>
+            Saves and loads all Engine 2 libraries.
+        </p>
+        <ul>
+            <li>Method: to_csv(prefix) - Exports l1_codata, l2_derived, l3_mapping to CSV</li>
+            <li>Method: from_csv(prefix) - Loads from CSV</li>
+            <li>Method: save(filename) - Serializes to pickle</li>
+        </ul>
+        <h2>Dependencies</h2>
+        <p>
+            The engine leans on these libraries to run smoothly.
+        </p>
+        <ul>
+            <li>pandas: Manages DataFrames for relationships and data (e.g., D1/D4 storage).</li>
+            <li>networkx: Builds graphs for dimensional connections (e.g., D1 points 1-2).</li>
+            <li>pickle: Serializes engine state for backups.</li>
+        </ul>
+        <p>
+            This code’s the blueprint—run it to start mapping the universe’s 17.3 million relationships.
+        </p>
+        <p><a href="python-libraries.html">Back to Libraries</a> | <a href="index.html">Home</a></p>
+    </div>
 </body>
 </html>
