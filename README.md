@@ -1,5 +1,6 @@
 # Silver-Phoenix
 Mathematical Computations and Derivations for Silver-Phoenix - Physics Modelling Archive
+
 "If you wish to make an apple pie from scratch, you must first invent the universe." - Carl Sagan
 
 First, the logic gate:  0+x=1.  I choose this because it is the dead minimum of data for a logic gate I could think of.  0 is OFF, FALSE, or NO (and also represents initial conditions).  1 is ON, TRUE, or YES (and represents a new condition).  x is self referential and contains no other external data.  It represents ONLY a reference to the logic gate, itself.  As an equation, this logic gate can be understood as:  Origin plus logic gate = new origin parameter.
