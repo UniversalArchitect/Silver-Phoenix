@@ -14,11 +14,9 @@
             padding: 20px;
             text-align: center;
         }
-        h1, h2 {
-            margin-bottom: 20px;
-        }
         h1 {
             font-size: 2.5em;
+            margin-bottom: 20px;
         }
         .container {
             padding: 20px;
@@ -48,33 +46,24 @@
     <div class="container">
         <h1>Relationships</h1>
         <p>
-            Engine 1 maps 17.3 million relationships across 12 dimensional points, from distance to gravity. We don’t list them all—that’d fry the server—but group them by math type, with D1 and D4 showing how equations translate across sets.
+            Engine 1 (E1L1) defines relationships across 12 dimensions, like D1 to D4 for length and time. Load <a href="E1L1.txt">E1L1.txt</a> into Engine 1 to populate. Below’s a sample—full CSV for all connections.
         </p>
-        <h2>Linear Relationships (D1, D4, D7, D10)</h2>
         <ul>
-            <li>D1 - Distance: Points 1-2, Equation: x2-x1, Set: Spatial (line length).</li>
-            <li>D4 - Duration: Points 1-2, Equation: t2-t1, Set: Temporal (time interval, same as D1, translated to time).</li>
-            <li>D7 - Kinetic Energy: Points 1-2, Equation: [Placeholder linear], Set: Energetic (motion).</li>
-            <li>D10 - Planck Force: Points 1-2, Equation: [Placeholder linear], Set: Force (gravitational balance).</li>
-        </ul>
-        <h2>Planar Relationships (D2, D5, D8, D11)</h2>
-        <ul>
-            <li>D2 - Area: Points 1-3, Equation: [Placeholder planar], Set: Spatial (plane).</li>
-            <li>D5 - Planar Time: Points 1-3, Equation: [Placeholder planar], Set: Temporal (time weave).</li>
-            <li>D8 - Orbital Energy: Points 1-3, Equation: [Placeholder planar], Set: Energetic (orbits).</li>
-            <li>D11 - Magnetism: Points 1-3, Equation: [Placeholder planar], Set: Force (dipolar).</li>
-        </ul>
-        <h2>Spatial Relationships (D3, D6, D9, D12)</h2>
-        <ul>
-            <li>D3 - Volume: Points 1-4, Equation: [Placeholder spatial], Set: Spatial (space).</li>
-            <li>D6 - Spatial Time: Points 1-4, Equation: [Placeholder spatial], Set: Temporal (time volume).</li>
-            <li>D9 - Field Energy: Points 1-4, Equation: [Placeholder spatial], Set: Energetic (fields).</li>
-            <li>D12 - Gravity: Points 1-4, Equation: [Placeholder spatial], Set: Force (monopolar).</li>
+            <li>D1-D4-0: D1 to D4, Type: codata, Meta: {'codata_key': 'planck_constant'}</li>
+            <li>D4-D7-1: D4 to D7, Type: codata, Meta: {'codata_key': 'speed_of_light'}</li>
+            <li>D3-D6-2: D3 to D6, Type: codata, Meta: {'codata_key': 'gravitational_constant'}</li>
+            <li>D7-D10-3: D7 to D10, Type: codata, Meta: {'codata_key': 'electron_mass'}</li>
+            <li>D7-D8-4: D7 to D8, Type: codata, Meta: {'codata_key': 'boltzmann_constant'}</li>
+            <li>D1-D3-5: D1 to D3, Type: codata, Meta: {'codata_key': 'avogadro_constant'}</li>
+            <li>D8-D11-6: D8 to D11, Type: codata, Meta: {'codata_key': 'elementary_charge'}</li>
+            <li>D1-D2-7: D1 to D2, Type: derived, Meta: {'source': 'planck_constant'}</li>
+            <li>D4-D5-8: D4 to D5, Type: derived, Meta: {'source': 'planck_constant'}</li>
+            <li>D7-D9-9: D7 to D9, Type: derived, Meta: {'source': 'planck_constant'}</li>
         </ul>
         <p>
-            D1 and D4’s shared equation—think distance flipped to duration—shows Engine 1’s power to unify dimensions. These relationships feed Engine 2’s data grind.
+            Relationships like D1-D4-0 tie CODATA to dimensions, driving the engine’s core logic.
         </p>
-        <p><a href="python-libraries.html">Back to Libraries</a> | <a href="index.html">Home</a></p>
+        <p><a href="tables.html">Back to Tables</a> | <a href="index.html">Home</a> | <a href="E1L1.txt">Download Full CSV</a></p>
     </div>
 </body>
 </html>
