@@ -46,17 +46,24 @@
     <div class="container">
         <h1>Derived Data</h1>
         <p>
-            Engine 2, Library 2 churns out the engine’s homegrown truths—data not tied to CODATA, verified to the bone. Ready for CSV when the time comes.
+            Engine 2, Library 2 (E2L2) stores non-CODATA results derived from Engine 1’s relationships, like D1’s length or D4’s time. Load <a href="E2L2.txt">E2L2.txt</a> into Engine 2 to populate. Below’s a sample—full CSV has more.
         </p>
         <ul>
-            <li>Distance Relationship (D1): Value [TBD], Round 1</li>
-            <li>Planar Time Metric (D5): Value [TBD], Round 3</li>
-            <li>Kinetic Energy Flow (D7): Value [TBD], Round 5</li>
+            <li>length_base: 6.62607015e-34, Verified: False, Path1: ['D1-D4-0'], Path2: ['D1-D4-0']</li>
+            <li>time_base: 299792458, Verified: False, Path1: ['D4-D7-1'], Path2: ['D4-D7-1']</li>
+            <li>grav_base: 6.67430e-11, Verified: False, Path1: ['D3-D6-2'], Path2: ['D3-D6-2']</li>
+            <li>mass_base: 9.1093837e-31, Verified: False, Path1: ['D7-D10-3'], Path2: ['D7-D10-3']</li>
+            <li>energy_base: 1.380649e-23, Verified: False, Path1: ['D7-D8-4'], Path2: ['D7-D8-4']</li>
+            <li>particle_base: 6.02214076e23, Verified: False, Path1: ['D1-D3-5'], Path2: ['D1-D3-5']</li>
+            <li>charge_base: 1.602176634e-19, Verified: False, Path1: ['D8-D11-6'], Path2: ['D8-D11-6']</li>
+            <li>planck_length: 1.616255e-35, Verified: False, Path1: ['D1-D2-7'], Path2: ['D1-D4-0']</li>
+            <li>planck_time: 5.391247e-44, Verified: False, Path1: ['D4-D5-8'], Path2: ['D4-D7-1']</li>
+            <li>planck_mass: 2.176434e-8, Verified: False, Path1: ['D7-D9-9'], Path2: ['D7-D10-3']</li>
         </ul>
         <p>
-            Each entry’s a step toward the universe’s rulebook, no shortcuts taken.
+            Values like length_base tie to D1/D4’s linear equations, awaiting verification. Full dataset drives the engine forward.
         </p>
-        <p><a href="tables.html">Back to Tables</a> | <a href="index.html">Home</a></p>
+        <p><a href="tables.html">Back to Tables</a> | <a href="index.html">Home</a> | <a href="E2L2.txt">Download Full CSV</a></p>
     </div>
 </body>
 </html>
