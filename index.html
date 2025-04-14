@@ -5,45 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silver Phoenix Engine</title>
     <style>
+    body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+    h1 {
+        font-size: clamp(24px, 6vw, 28px);
+    }
+    h2 {
+        font-size: clamp(20px, 5vw, 24px);
+    }
+    .container {
+        padding: 20px;
+        max-width: 90vw;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    ul {
+        display: inline-block;
+        text-align: left;
+        margin: 20px auto;
+        padding-left: 20px;
+        max-width: 90vw;
+    }
+    a {
+        color: #4da8da;
+        text-decoration: none;
+        padding: 10px;
+        display: inline-block;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    @media (max-width: 600px) {
         body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.1em;
-        }
-        nav {
-            margin-top: 40px;
-        }
-        nav a {
-            color: #4da8da;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 0 15px;
-            padding: 5px 10px;
-            border: 1px solid #4da8da;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #4da8da;
-            color: #1a1a1a;
+            padding: 10px;
         }
         .container {
-            padding: 20px;
+            padding: 15px;
         }
-    </style>
+        p, ul {
+            font-size: clamp(16px, 4vw, 18px);
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container">
