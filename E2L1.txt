@@ -1,0 +1,8 @@
+key,value,status
+planck_constant,6.62607015e-34,-U
+speed_of_light,299792458,-U
+gravitational_constant,6.67430e-11,-U
+electron_mass,9.1093837e-31,-U
+boltzmann_constant,1.380649e-23,-U
+avogadro_constant,6.02214076e23,-U
+elementary_charge,1.602176634e-19,-U
