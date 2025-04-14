@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationships - Silver Phoenix Engine</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            display: inline-block;
+            text-align: left;
+            margin: 0 auto 15px;
+            padding-left: 20px;
+            max-width: 600px;
+        }
+        a {
+            color: #4da8da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Relationships</h1>
+        <p>
+            Engine 1 (E1L1) defines relationships across 12 dimensions, like D1 to D4 for length and time. Load <a href="E1L1.txt">E1L1.txt</a> into Engine 1 to populate. Below’s a sample—full CSV for all connections.
+        </p>
+        <ul>
+            <li>D1-D4-0: D1 to D4, Type: codata, Meta: {'codata_key': 'planck_constant'}</li>
+            <li>D4-D7-1: D4 to D7, Type: codata, Meta: {'codata_key': 'speed_of_light'}</li>
+            <li>D3-D6-2: D3 to D6, Type: codata, Meta: {'codata_key': 'gravitational_constant'}</li>
+            <li>D7-D10-3: D7 to D10, Type: codata, Meta: {'codata_key': 'electron_mass'}</li>
+            <li>D7-D8-4: D7 to D8, Type: codata, Meta: {'codata_key': 'boltzmann_constant'}</li>
+            <li>D1-D3-5: D1 to D3, Type: codata, Meta: {'codata_key': 'avogadro_constant'}</li>
+            <li>D8-D11-6: D8 to D11, Type: codata, Meta: {'codata_key': 'elementary_charge'}</li>
+            <li>D1-D2-7: D1 to D2, Type: derived, Meta: {'source': 'planck_constant'}</li>
+            <li>D4-D5-8: D4 to D5, Type: derived, Meta: {'source': 'planck_constant'}</li>
+            <li>D7-D9-9: D7 to D9, Type: derived, Meta: {'source': 'planck_constant'}</li>
+        </ul>
+        <p>
+            Relationships like D1-D4-0 tie CODATA to dimensions, driving the engine’s core logic.
+        </p>
+        <p><a href="tables.html">Back to Tables</a> | <a href="index.html">Home</a> | <a href="E1L1.txt">Download Full CSV</a></p>
+    </div>
+</body>
+</html>
